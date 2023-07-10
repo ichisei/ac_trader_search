@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+area_names = %w(
+  東京
+  神奈川
+  埼玉
+  千葉
+)
+
+area_names.each do |name|
+  Area.create!(compatible_area: name)
+end

@@ -1,29 +1,52 @@
-<h2>Sign up</h2>
+<div class='container'>
+  <div class='row'>
+    <div class='col text-center'>
+      <%#= stylesheet_link_tag 'registrations' %>
+<h2>新規会員登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model:@customer,url: customer_registration_path do |f| %>
   <%= render "customer/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<table>
+  <tr>
+        <td class="field"><%= f.label :last_name, "(姓)" %></td>
+        <td><%= f.text_field :last_name, autofocus: true ,:placeholder =>"空気"%></td>
+        <td class="field"><%= f.label :first_name, "(名)" %></td>
+        <td><%= f.text_field :first_name, :placeholder =>"喜朗" %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :password %>
+  <tr>
+        <td class="field"><%= f.label :last_name_kana, "(セイ)" %></td>
+        <td><%= f.text_field :last_name_kana, :placeholder =>"クウキ" %></td>
+        <td class="field"><%= f.label :first_name_kana, "(メイ)"  %></td>
+        <td><%= f.text_field :first_name_kana, :placeholder =>"ヨシロウ" %></td>
+  </tr>
+セイ
+  <tr>
+    <td class="field"><%= f.label :email, "メールアドレス"  %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder =>"888@888.com" %></td>
+  </tr>
+  <tr>
+    <td class="field"><%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <% end %></td>
+    <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
+  <tr>
+    <td class="field">
+    <%= f.label :password_confirmation, "パスワード(確認用)"  %></td>
+    <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+  </tr>
+</table>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
+<h2>既に登録済みの方</h2>
 <%= render "customer/shared/links" %>
+</div>
+  </div>
+</div>
