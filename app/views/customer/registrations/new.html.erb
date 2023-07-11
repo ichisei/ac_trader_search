@@ -1,52 +1,62 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col text-center'>
+<!--<div class='container'>-->
+  <!--<div class='row'>-->
+    <!--<div class='col text-center'>-->
       <%#= stylesheet_link_tag 'registrations' %>
 <h2>新規会員登録</h2>
 
 <%= form_with model:@customer,url: customer_registration_path do |f| %>
   <%= render "customer/shared/error_messages", resource: resource %>
 
-<table>
-  <tr>
-        <td class="field"><%= f.label :last_name, "(姓)" %></td>
-        <td><%= f.text_field :last_name, autofocus: true ,:placeholder =>"空気"%></td>
-        <td class="field"><%= f.label :first_name, "(名)" %></td>
-        <td><%= f.text_field :first_name, :placeholder =>"喜朗" %></td>
-  </tr>
+<div class="container mt-3">
+  <div class="row">
+      <form>
+        <div class="form-group col-10">
+          <label>お名前</label>
+          <div class="col-auto">
+            <%= f.label :last_name, "( 姓 )" %>
+            <%= f.text_field :last_name, autofocus: true ,:placeholder =>"空気"%>
+            <%= f.label :first_name, "(名)" %>
+            <%= f.text_field :first_name, :placeholder =>"喜朗" %>
+          </div>
+        </div>
+        <div class="form-group col-10">
+          <label>カナ</label>
+          <div class="col-auto">
+            <%= f.label :last_name_kana, "(セイ)" %>
+            <%= f.text_field :last_name_kana, :placeholder =>"クウキ" %>
+            <%= f.label :first_name_kana, "(メイ)"  %>
+            <%= f.text_field :first_name_kana, :placeholder =>"ヨシロウ" %>
+          </div>
+        </div>
+        <div class="form-group col-7">
+          <label>メールアドレス</label>
+          <div class="col-auto">
+            <%= f.label :email %>
+            <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com" %>
+          </div>
+        </div>
+        <div class="form-group col-7">
+          <label> パスワード (6文字以上)</label>
+          <div class="col-auto">
+        　　　<%= f.label :password %>
+            <%= f.password_field :password %>
+        </div>
+        </div>
+        <div class="form-group col-7">
+          <label> パスワード (確認用)</label>
+          <div class="col-auto">
+            <%= f.label :password_confirmation, "パスワード(確認用)"  %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+        </div>
 
-  <tr>
-        <td class="field"><%= f.label :last_name_kana, "(セイ)" %></td>
-        <td><%= f.text_field :last_name_kana, :placeholder =>"クウキ" %></td>
-        <td class="field"><%= f.label :first_name_kana, "(メイ)"  %></td>
-        <td><%= f.text_field :first_name_kana, :placeholder =>"ヨシロウ" %></td>
-  </tr>
-セイ
-  <tr>
-    <td class="field"><%= f.label :email, "メールアドレス"  %></td>
-    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder =>"888@888.com" %></td>
-  </tr>
-  <tr>
-    <td class="field"><%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %></td>
-    <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-  </tr>
-
-  <tr>
-    <td class="field">
-    <%= f.label :password_confirmation, "パスワード(確認用)"  %></td>
-    <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-  </tr>
-</table>
-  <div class="actions">
-    <%= f.submit "新規登録" %>
+        <div class="form-group col-7">
+            <%= f.submit "新規登録" %>
+        </div>
+      </form>
   </div>
+</div>
 <% end %>
 
-<h2>既に登録済みの方</h2>
-<%= render "customer/shared/links" %>
-</div>
-  </div>
-</div>
+<p>既に登録済みの方</p>
+  <%= render "customer/shared/links" %>
