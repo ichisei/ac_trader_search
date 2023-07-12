@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Trader::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -42,7 +42,7 @@ class Trader::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:company_name, :company_name_kana, :post_code, :address, :telephone_number, :is_compatible_machine, :public_relations])
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:company_name, :company_name_kana, :post_code, :address, :telephone_number, :compatible_machine, :public_relations])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

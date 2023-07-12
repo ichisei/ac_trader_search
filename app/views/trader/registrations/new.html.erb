@@ -2,7 +2,7 @@
 <h2>新規会員登録</h2>
 <br>
 
-<%= form_with model: @trader,url: trader_registration_path do |f| %>
+<%= form_with model: @trader,url: trader_registration_path, method: :post do |f| %>
   <%= render "customer/shared/error_messages", resource: resource %>
 
 
@@ -50,10 +50,10 @@
         </div>
         <div class="form-group col-7">
             <p class="mt-1">対応可能機器</p></td>
-            <%= f.radio_button :is_compatible_machine, true %>
-            <%= f.label :is_compatible_machine, "家庭用" %>
-            <%= f.radio_button :is_compatible_machine, false %>
-            <%= f.label :is_compatible_machine, "業務用" %>
+            <%= f.radio_button :compatible_machine, true %>
+            <%= f.label :compatible_machine, "家庭用" %>
+            <%= f.radio_button :compatible_machine, false %>
+            <%= f.label :compatible_machine, "業務用" %>
         </div>
         <div class="form-group col-7">
             <%= f.submit '新規登録' %>
