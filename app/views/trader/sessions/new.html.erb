@@ -1,13 +1,14 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
+<h2>ログイン</h2>
+<%= form_with model: @trader, url: session_path(resource_name) do |f| %>
+  <div class="row">
+    <div class="col-md">
+    <div class="mt-4"><%= f.label :email %></div>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <div class="ml-4, mt-4"><%= f.label :password %><br/>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -19,8 +20,12 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="mt-4"><%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
 
-<%= render "trader/shared/links" %>
+<br>
+<br>
+
+ <h4>登録がお済みでない方</h4>
+  <p><%= link_to "こちら", new_trader_registration_path, class: "underline" %>から新規登録を行なってください。</p>
