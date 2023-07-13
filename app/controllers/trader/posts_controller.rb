@@ -1,8 +1,8 @@
-class Customer::PostsController < ApplicationController
+class Trader::PostsController < ApplicationController
   
   def new
     @comment = Post.new
-    @tradere = Trader.find(params[:id])
+    @trader = Trader.find(params[:trader_id])
 
   end
 

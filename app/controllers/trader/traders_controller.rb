@@ -19,7 +19,7 @@ class Trader::TradersController < ApplicationController
   private
 
   def trader_params
-    params.require(:trader).permit(:company_name, :company_name_kana, :post_code, :address, :telephone_number, :is_compatible_machine, :public_relations, :profile_image)
+    params.require(:trader).permit(:company_name, :company_name_kana, :post_code, :address, :telephone_number, :compatible_machine, :public_relations, :profile_image, area_ids: [])
   end
   
 end
