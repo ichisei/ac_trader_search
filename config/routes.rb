@@ -14,11 +14,12 @@ Rails.application.routes.draw do
 
   scope module: :customer do
     resources :customers, only: [:index, :show]
-    resources :posts, only: [:new, :create]
   end
 
   scope module: :trader do
-    resources :traders, only: [:show, :edit, :update]
+    resources :traders, only: [:show, :edit, :update] do
+      resources :posts, only: [:new, :create]
+    end
     resources :schedules, only: [:index, :create, :destroy]
     get "home" => "homes#top", as: 'pro'
   end

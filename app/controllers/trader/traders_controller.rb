@@ -13,7 +13,7 @@ class Trader::TradersController < ApplicationController
   def update
     @trader = Trader.find(params[:id])
     @trader.update(trader_params)
-    redirect_to trader_path(@item.id)
+    redirect_to trader_path(@trader.id)
   end
   
   private

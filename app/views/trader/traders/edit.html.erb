@@ -46,23 +46,22 @@
              <%= f.text_area :public_relations, rows: "5", class: "w-300" %>
         </div>
         <div class="form-group col-7">
-             <p class="mt-1">対応可能機器</p></td>
-             <%= f.radio_button :is_compatible_machine, true %>
-             <%= f.label :is_compatible_machine, "家庭用" %>
-             <%= f.radio_button :is_compatible_machine, false %>
-             <%= f.label :is_compatible_machine, "業務用" %>
-             
-             
+             <p class="mt-1">対応可能機器</p>
+             <%= f.radio_button :compatible_machine, true %>
+             <%= f.label :compatible_machine, "家庭用" %>
+             <%= f.radio_button :compatible_machine, false %>
+             <%= f.label :compatible_machine, "業務用" %>
+        </div>     
         <div class="form-group col-7">
-             <p class="mt-1">対応可能エリア</p></td>
+             <p class="mt-1">対応可能エリア</p>
              <% f.collection_check_boxies :area_ids, Area.all, :id, :name do |b| %>
              <%= b.check_box %>
              <%= b.text %>
-             
-             
         </div>
         <div class="form-group">
               <%= f.submit '新規登録' %>
         </div>
   </div>
 <% end %>
+</div>
+

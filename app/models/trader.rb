@@ -4,17 +4,21 @@ class Trader < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :trader_areas
+  has_many :trader_areas, dependent: :destroy
   has_many :areas, through: :trader_areas
   
-  has_one_attached :image
-  
-  def get_profile_image(width, height)
+  has_many :posts, dependent: :destroy
+
+  has_one_attached :profile_image
+
+  def get_profile_image
+    # (width, height)
   unless profile_image.attached?
-    file_path = Rails.root.join('app/assets/images/AC.png')
+    file_path = Rails.root.join('app/assets/images/IMG-888.jpg')
     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
   end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image
+    # profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
 end

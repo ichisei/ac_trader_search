@@ -1,1 +1,40 @@
-<h2>業者一覧</h2>
+<div class="container-md">
+  <div class= "row">
+  　<div class= "col">
+  　  <h2>業者一覧</h2>
+
+
+    <table class="table mx-auto">
+      <tr>
+        <th></th>
+        <th>会社名</th>
+        <th>住所</th>
+        <th>対応機器</th>
+        <th>
+      </tr>
+      <% @traders.each do |trader| %>
+        <tr>
+          <td><%= trader.id %></td>
+          <td><%= link_to trader.company_name, customer_path(trader.id) %></td>
+          <td><%= trader.address %></td>
+
+          <% if trader.compatible_machine == true %>
+          <td><%= "家庭用機器" %></td>
+          <% else %>
+          <td><%= "業務用機器" %></td>
+          <% end %>
+
+        </tr>
+      <% end %>
+    </table>
+    <!--<div class ="row">-->
+    <!--  <div class ="mx-auto">-->
+    <!--    <#%= paginate @traders %>-->
+    <!--  </div>-->
+    <!--</div>-->
+    </div>
+  </div>
+</div>
+
+
+
