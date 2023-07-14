@@ -1,0 +1,14 @@
+<div class="align-center">
+  <div class="row m-3"><h5>登録済み一覧</h5></div>
+  <div class="tag-index">
+    <%= render 'area_index', areas: @areas %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-11 mx-auto">
+    <h5 class="m-3">追加登録</h5>
+    <div class="area-form">
+      <%= render 'area_form', area: @area %>
+    </div>
+  </div>
+</div>

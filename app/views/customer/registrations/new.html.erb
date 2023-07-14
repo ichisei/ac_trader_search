@@ -1,7 +1,3 @@
-<!--<div class='container'>-->
-  <!--<div class='row'>-->
-    <!--<div class='col text-center'>-->
-      <%#= stylesheet_link_tag 'registrations' %>
 <div class="container mt-3">
 <h2>新規会員登録</h2>
 <br>
@@ -9,53 +5,40 @@
 <%= form_with model:@customer,url: customer_registration_path do |f| %>
   <%= render "customer/shared/error_messages", resource: resource %>
 
-<!--<div class="container mt-4">-->
   <div class="row">
-      <!--<form>-->
-        <div class="form-group col-10">
+        <div class="form-group col-7">
           <label>お名前</label>
-          <div class="col-auto">
             <%= f.label :last_name, "( 姓 )" %>
-            <%= f.text_field :last_name, autofocus: true ,:placeholder =>"空気"%>
+            <%= f.text_field :last_name, autofocus: true ,:placeholder =>"空気", class: "form-control" %>
             <%= f.label :first_name, "(名)" %>
-            <%= f.text_field :first_name, :placeholder =>"喜朗" %>
-          </div>
+            <%= f.text_field :first_name, :placeholder =>"喜朗", class: "form-control" %>
         </div>
-        <div class="form-group col-10">
+        <div class="form-group col-7">
           <label>カナ</label>
-          <div class="col-auto">
             <%= f.label :last_name_kana, "(セイ)" %>
-            <%= f.text_field :last_name_kana, :placeholder =>"クウキ" %>
+            <%= f.text_field :last_name_kana, :placeholder =>"クウキ", class: "form-control" %>
             <%= f.label :first_name_kana, "(メイ)"  %>
-            <%= f.text_field :first_name_kana, :placeholder =>"ヨシロウ" %>
-          </div>
+            <%= f.text_field :first_name_kana, :placeholder =>"ヨシロウ", class: "form-control" %>
         </div>
         <div class="form-group col-7">
           <label>メールアドレス</label>
-          <div class="col-auto">
             <%= f.label :email %>
-            <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com" %>
-          </div>
+            <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com", class: "form-control" %>
         </div>
         <div class="form-group col-7">
           <label> パスワード (6文字以上)</label>
-          <div class="col-auto">
             <%= f.label :password %>
-            <%= f.password_field :password %>
-        </div>
+            <%= f.password_field :password, class: "form-control" %>
         </div>
         <div class="form-group col-7">
           <label> パスワード (確認用)</label>
-          <div class="col-auto">
             <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          </div>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
 
         <div class="form-group col-7">
             <%= f.submit "新規登録" %>
         </div>
-      <!--</form>-->
   </div>
   <br>
 

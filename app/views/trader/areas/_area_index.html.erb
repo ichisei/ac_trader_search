@@ -1,0 +1,10 @@
+<div class="item-wrap row mb-5">
+<% areas.each do |area| %>
+  <div class="item shadow-sm col-md-4 p-3 my-3">
+    <%= area.compatible_area %>
+    <%= link_to area_path(area.id), method: :delete, style: 'color: red;', 'data-confirm'=>'このタグを削除します' do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
+<% end %>
+</div>

@@ -51,10 +51,23 @@
           <td>PR・実績・資格等</td>
           <td><%= @trader.public_relations %></td>
         </tr>
+        <tr>
+          <td>対応可能エリア</td>
+          <td><%= @trader.areas.map(&:compatible_area).join("/") %></td>
+        </tr>
       </tbody>
     </table>
     <br>
     <div class="flex align-center pl5">
       <%= link_to "コメントする", new_trader_post_path(@trader), class: "btn btn-success" %>
     </div>
+    
+    <div>
+      <% @post_comments.each do |post_comment| %>
+        <%= post_comment.customer.last_name %>
+        <%= post_comment.comment %>
+        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+      <% end %>
+    </div>   
+    
 </div>

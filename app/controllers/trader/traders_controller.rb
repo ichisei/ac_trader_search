@@ -7,7 +7,7 @@ class Trader::TradersController < ApplicationController
 
   def edit
     @trader = Trader.find(params[:id])
-    
+    @areas = Area.all
   end
 
   def update

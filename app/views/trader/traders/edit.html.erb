@@ -6,47 +6,39 @@
   <%= render "customer/shared/error_messages", resource: @trader %>
 
   <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="form-group col-7">
             <%= f.label :company_name, "会社名" %>
-            <%= f.text_field :company_name, autofocus: true ,:placeholder =>"空調職人株式会社", size: "50", class: "form-control" %>
+            <%= f.text_field :company_name, autofocus: true ,:placeholder =>"空調職人株式会社", size: "30", class: "form-control ml-4" %>
         </div>
         <div class="form-group col-7">
             <%= f.label :company_name_kana, "カナ" %>
-            <%= f.text_field :company_name_kana, :placeholder =>"クウチョウショクニン(カブ", size: "50", class: "form-control" %>
+            <%= f.text_field :company_name_kana, :placeholder =>"クウチョウショクニン(カブ", size: "50", class: "form-control ml-4" %>
         </div>
         <div class="form-group col-7">
             <%= f.label :post_code, "郵便番号" %>
-            <%= f.text_field :post_code, :placeholder =>"8888888", size: "5", class: "form-control" %>
+            <%= f.text_field :post_code, :placeholder =>"8888888", size: "5", class: "form-control ml-4" %>
         </div>
         <div class="form-group col-7">
             <%= f.label :address, "住所" %>
-            <%= f.text_field :address, :placeholder =>"8888888", size: "50", class: "form-control" %>
+            <%= f.text_field :address, :placeholder =>"8888888", size: "50", class: "form-control ml-4" %>
         </div>
         <div class="form-group col-7">
             <%= f.label :telephone_number, "電話番号" %>
-            <%= f.text_field :telephone_number, :placeholder =>"09088888888", size: "20", class: "form-control" %>
+            <%= f.text_field :telephone_number, :placeholder =>"09088888888", size: "30", class: "form-control ml-4" %>
         </div>
-        <div class="form-group col-6">
+        <div class="form-group col-7">
             <%= f.label :email %>
-            <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com", size: "30", class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :password, "パスワード (6文字以上)" %>
-            <%= f.password_field :password, class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :password_confirmation, "パスワード (確認用)" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com", size: "30", class: "form-control ml-4" %>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="form-group col-7">
-             <%= image_tag @trader.get_profile_image(100, 100) %>
+    <div class="col-md-7">
+        <div class="form-group col-8">
+             <%= image_tag @trader.get_profile_image(150, 150) %>
         </div>
         <div class="form-group col-7">
              <%= f.label :password_confirmation, "PR・実績・資格等" %>
-             <%= f.text_area :public_relations, rows: "5", class: "w-300" %>
+             <%= f.text_area :public_relations, rows: "7", class: "w-100" %>
         </div>
         <div class="form-group col-7">
              <p class="mt-1">対応可能機器</p>
@@ -54,18 +46,32 @@
              <%= f.label :compatible_machine, "家庭用" %>
              <%= f.radio_button :compatible_machine, false %>
              <%= f.label :compatible_machine, "業務用" %>
-        </div>     
-        <div class="form-group col-7">
-             <p class="mt-1">対応可能エリア</p>
-             <%= f.collection_check_boxes(:area_ids, Area.all, :id, :compatible_area) do |b| %>
-             <%= b.label { b.check_box + b.text } %>
-             <% end %>
         </div>
+          <div class="form-group row">
+             <%= f.label :area_ids, '対応可能エリア', class: 'col-md-4' %>
+             <div class="col-md-8 border d-flex flex-row flex-wrap">
+               <%= f.collection_check_boxes :area_ids, @areas, :id, :compatible_area do |b| %>
+                 <div class="mx-2 mt-1">
+                   <%= b.check_box %>
+                   <%= b.label %>
+                  </div>
+               <% end %>
+             </div>
+           </div>
+    </div>
+    <div class="col-md-9">
         <div class="form-group">
-              <%= f.submit '登録' %>
+              <%= f.submit '登   録', class: "btn btn-outline-primary btn-block" %>
         </div>
     </div>
-  </div>
 <% end %>
 </div>
 
+
+
+<!--<div class="form-group col-7">-->
+<!--             <p class="mt-1">対応可能エリア</p>-->
+             <%#= f.collection_check_boxes(:area_ids, Area.all, :id, :compatible_area) do |b| %>
+             <%#= b.label { b.check_box + b.text } %>
+             <%# end %>
+        <!--</div>-->

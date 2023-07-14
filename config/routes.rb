@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :posts, only: [:new, :create]
     end
     resources :schedules, only: [:index, :create, :destroy]
+    resources :areas, only: [:index, :create, :destroy]
     get "home" => "homes#top", as: 'pro'
   end
 

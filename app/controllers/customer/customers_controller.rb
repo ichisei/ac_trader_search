@@ -6,6 +6,7 @@ class Customer::CustomersController < ApplicationController
 
   def show
     @trader = Trader.find(params[:id])
+    @post_comments = Post.all
   end
   
 end
