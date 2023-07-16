@@ -36,11 +36,11 @@
 
           <tr>
             <td>対応エリア</td>
-            <td><%= @trader.areas.map(&:compatible_area).join("/") %></td>
+            <td><%= @trader.areas.map(&:compatible_area).join(" / ") %></td>
           </tr>
           <tr>
             <td>対応機器</td>
-            <td><%= @trader.machines.map(&:possible_machine).join("/") %></td>
+            <td><%= @trader.machines.map(&:possible_machine).join(" / ") %></td>
           </tr>
           <tr>
             <td>PR</td>

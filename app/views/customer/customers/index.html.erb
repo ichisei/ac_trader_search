@@ -3,41 +3,40 @@
   　<div class= "col">
   　  <h2>業者一覧</h2>
 
-
     <table class="table mx-auto">
       <tr>
         <th></th>
         <th>会社名</th>
         <th>住所</th>
         <th>対応可能エリア</th>
-        <th>
+        <th>対応可能機器</th>
       </tr>
       <% @traders.each do |trader| %>
         <tr>
           <td><%= trader.id %></td>
           <td><%= link_to trader.company_name, customer_path(trader.id) %></td>
           <td><%= trader.address %></td>
-          <td><%#= trader.areas.compatible_area %></td>
+          <td><%= trader.areas.map(&:compatible_area).join(" / ") %></td>
+          <td><%= trader.machines.map(&:possible_machine).join(" / ") %></td>
         </tr>
       <% end %>
     </table>
-　　　　　
-　　　　 <h4>検索</h4>
+    <% if customer_signed_in? %>
+        <h4>検索</h4>
         <div class="form-group row">
-             <%= form_with model: @areas, method: :get, url: customers_path do |f| %>
-             　<%= f.label :area_ids, '対応可能エリア', class: 'col-md-7' %>
-               <%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", class: 'form-control' %>
-               <%= f.submit "検索", class: "btn-sm btn-primary" %>
+             <%= form_with method: :get, url: customers_path do |f| %>
+             <table class="table mx-auto">
+             　<tr>
+                 <th><%= f.label :area_ids, '対応可能エリア', class: 'col-md' %></th>
+                 <th><%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
+             　   <th><%= f.label :machine_ids, '対応可能機器', class: 'col-md '%></th>
+                 <th><%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
+                 <th><%= f.submit "検索", class: "btn-sm btn-primary" %></th>
+               </tr>
+             </table>
              <% end %>
-             
-             <%= form_with model: @machines, method: :get, url: customers_path do |f| %>
-             　<%= f.label :machine_ids, '対応可能機器', class: 'col-md-7' %>
-               <%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", class: 'form-control' %>
-               <%= f.submit "検索", class: "btn-sm btn-primary" %>
-             <# end %>
-             
         </div>
-
+    <% end %>
     </div>
   </div>
 </div>

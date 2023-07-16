@@ -1,31 +1,20 @@
 class Customer::CustomersController < ApplicationController
 
   def index
-    #@traders = Customer.search
+    @areas = Area.all
+    @machines = Machine.all
 
-    if params[:area]
-      areaid = params[:area][:area_ids]
-      @area = Area.find(areaid)
-      @traders = @area.traders
+    if params[:area_ids] && params[:machine_ids]
+       @traders = Trader.joins(:areas).merge(Area.where(id: params[:area_ids].presence))
+       @traders = @traders.joins(:machines).merge(Machine.where(id: params[:machine_ids].presence))
+    elsif params[:area_ids]
+       @traders = Trader.joins(:areas).merge(Area.where(id: params[:area_ids].presence))
+    elsif params[:machine_ids]
+       @traders = Traders.joins(:machines).merge(Machine.where(id: params[:machine_ids].presence))
     else
-      @traders = Trader.all
-    end
-    
-      @areas = Area.all
-
-     if params[:machine]
-       machineid = params[:machine][:machine_ids]
-       @machine = Machine.find(machineid)
-       @traders = @machine.traders
-     else
        @traders = Trader.all
-     end
-    　  @machines = Machine.all
-
+    end
   end
-
-
-
 
   def show
     @trader = Trader.find(params[:id])
@@ -33,7 +22,6 @@ class Customer::CustomersController < ApplicationController
   end
 
   private
-
   def trade_params
       params.require(:trader).permit(area_ids: [], machine_ids: [])
   end
