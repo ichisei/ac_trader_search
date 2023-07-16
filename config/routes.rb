@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
     resources :schedules, only: [:index, :create, :destroy]
     resources :areas, only: [:index, :create, :destroy]
+    resources :machines, only: [:index, :create, :destroy]
     get "home" => "homes#top", as: 'pro'
   end
 

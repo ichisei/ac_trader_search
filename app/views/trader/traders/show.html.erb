@@ -33,23 +33,18 @@
             <td>メールアドレス</td>
             <td><%= @trader.email %></td>
           </tr>
+
           <tr>
-            <td>対応可能機器</td>
-            <td>
-              <% if @trader.compatible_machine == true %>
-              <span class="text-active">家庭用</span>
-              <% else %>
-              <span class="text-active">業務用</span>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td>PR・実績・資格等</td>
-            <td><%= @trader.public_relations %></td>
-          </tr>
-          <tr>
-            <td>対応可能エリア</td>
+            <td>対応エリア</td>
             <td><%= @trader.areas.map(&:compatible_area).join("/") %></td>
+          </tr>
+          <tr>
+            <td>対応機器</td>
+            <td><%= @trader.machines.map(&:possible_machine).join("/") %></td>
+          </tr>
+          <tr>
+            <td>PR</td>
+            <td><%= @trader.public_relations %></td>
           </tr>
         </tbody>
       </table>

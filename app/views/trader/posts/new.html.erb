@@ -1,6 +1,17 @@
-<div>
-  <%= form_with model: [@trader, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '10', placeholder: "コメントをここに" %>
-    <%= f.submit "登録する" %>
-  <% end %>
-</div>
+<div class="container mt-3">
+<h2>レビュー入力</h2>
+<br>
+
+　<div class="row">
+    <div class="col-md-10">
+      <div class="form-group">
+  　　　　　<%= form_with model: [@trader, @comment] do |f| %>
+    　　　<%= f.text_area :comment, rows: '10', class: "w-1000", placeholder: "コメントをここに" %>
+        <div class="form-group">
+          <%= f.submit '登   録', class: "btn btn-primary btn-block" %>
+        </div>
+  　　　　　<% end %>
+　　　</div>
+　　</div>
+　</div>
+</div>　

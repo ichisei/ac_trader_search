@@ -9,7 +9,7 @@
         <th></th>
         <th>会社名</th>
         <th>住所</th>
-        <th>対応機器</th>
+        <th>対応可能エリア</th>
         <th>
       </tr>
       <% @traders.each do |trader| %>
@@ -17,23 +17,25 @@
           <td><%= trader.id %></td>
           <td><%= link_to trader.company_name, customer_path(trader.id) %></td>
           <td><%= trader.address %></td>
-          <% if trader.compatible_machine == true %>
-          <td><%= "家庭用機器" %></td>
-          <% else %>
-          <td><%= "業務用機器" %></td>
-          <% end %>
           <td><%#= trader.areas.compatible_area %></td>
         </tr>
       <% end %>
     </table>
 　　　　　
-　　　　
+　　　　 <h4>検索</h4>
         <div class="form-group row">
              <%= form_with model: @areas, method: :get, url: customers_path do |f| %>
-             　<%= f.label :area_ids, '対応エリア', class: 'col-md-7' %>
+             　<%= f.label :area_ids, '対応可能エリア', class: 'col-md-7' %>
                <%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", class: 'form-control' %>
                <%= f.submit "検索", class: "btn-sm btn-primary" %>
              <% end %>
+             
+             <%= form_with model: @machines, method: :get, url: customers_path do |f| %>
+             　<%= f.label :machine_ids, '対応可能機器', class: 'col-md-7' %>
+               <%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", class: 'form-control' %>
+               <%= f.submit "検索", class: "btn-sm btn-primary" %>
+             <# end %>
+             
         </div>
 
     </div>

@@ -6,6 +6,9 @@ class Trader < ApplicationRecord
 
   has_many :trader_areas, dependent: :destroy
   has_many :areas, through: :trader_areas
+  
+  has_many :trader_machines, dependent: :destroy
+  has_many :machines, through: :trader_machines
 
   has_many :posts, dependent: :destroy
 

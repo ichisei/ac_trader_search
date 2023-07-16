@@ -38,19 +38,10 @@
         </div>
       </div>
       <div class="col-md-5">
-        <div class="form-group col-13">
-             <%= f.label :password_confirmation, "PR・実績・資格等" %>
-             <%= f.text_area :public_relations, rows: "9", class: "w-100" %>
-        </div>
-        <div class="form-group col-7">
-             <p class="mt-1">対応可能機器</p>
-             <%= f.radio_button :compatible_machine, true %>
-             <%= f.label :compatible_machine, "家庭用" %>
-             <%= f.radio_button :compatible_machine, false %>
-             <%= f.label :compatible_machine, "業務用" %>
-        </div>
+
+
         <div class="form-group row">
-             <%= f.label :area_ids, '対応エリア', class: 'col-md-7' %>
+             <%= f.label :area_ids, '対応可能エリア', class: 'col-md-7' %>
              <div class="col-md-8 border d-flex flex-row flex-wrap">
                <%= f.collection_check_boxes :area_ids, @areas, :id, :compatible_area do |b| %>
                  <div class="mx-2 mt-1">
@@ -60,6 +51,24 @@
                <% end %>
              </div>
         </div>
+        
+        <div class="form-group row">
+             <%= f.label :machine_ids, '対応可能機器', class: 'col-md-7' %>
+             <div class="col-md-8 border d-flex flex-row flex-wrap">
+               <%= f.collection_check_boxes :machine_ids, @machines, :id, :possible_machine do |b| %>
+                 <div class="mx-2 mt-1">
+                   <%= b.check_box %>
+                   <%= b.label %>
+                  </div>
+               <% end %>
+             </div>
+        </div>
+        <div class="form-group col-13">
+             <%= f.label :password_confirmation, "PR・実績・資格等" %>
+             <%= f.text_area :public_relations, rows: "9", class: "w-100" %>
+        </div>
+        
+        
         <div class="form-group">
               <%= f.submit '登   録', class: "btn btn-primary btn-block" %>
         </div>

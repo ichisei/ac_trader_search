@@ -4,7 +4,7 @@ class Trader::AreasController < ApplicationController
     @area = Area.new(area_params)
     @areas = Area.all
     @area.save
-    redirect_to edit_trader_path
+    redirect_to request.referer
   end
 
   def index
@@ -16,7 +16,7 @@ class Trader::AreasController < ApplicationController
     @areas = Area.all
     @area = Area.find(params[:id])
     @area.destroy
-    redirect_to edit_trader_path
+    redirect_to request.referer
   end
 
   private

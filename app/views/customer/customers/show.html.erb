@@ -1,10 +1,10 @@
 <div class="container">
   <h2>業者詳細</h2>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <%= image_tag @trader.get_profile_image(100, 100) %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <table>
           <thead>
             <tr>
@@ -38,39 +38,40 @@
               <td><%= @trader.email %></td>
             </tr>
             <tr>
-              <td>対応可能機器</td>
-              <td>
-                <% if @trader.compatible_machine == true %>
-                <span class="text-active">家庭用</span>
-                <% else %>
-                <span class="text-active">業務用</span>
-                <% end %>  
-              </td>
-            </tr>
-            <tr>
-              <td>PR・実績・資格等</td>
-              <td><%= @trader.public_relations %></td>
-            </tr>
-            <tr>
               <td>対応可能エリア</td>
               <td><%= @trader.areas.map(&:compatible_area).join("/") %></td>
             </tr>
+            <tr>
+              <td>対応機器</td>
+              <td><%= @trader.machines.map(&:possible_machine).join("/") %></td>
+            </tr>
+            <tr>
+              <td>PR</td>
+              <td><%= @trader.public_relations %></td>
+            </tr>
           </tbody>
         </table>
+        <div class="flex align-center pl5">
+          <%= link_to "業者一覧", customers_path, class: "btn btn-success" %>
+        </div>
         </div>
         
+        <% if customer_signed_in? %>
         <div class="col-md-5">
+          <h5>＜レビュー履歴＞</h5>
+          <% @post_comments.each do |post_comment| %>  
+           <table>
+             <tbody>
+               <tr><%= post_comment.customer.last_name %>　様　　　</tr>
+              <tr><%= post_comment.created_at.strftime('%Y/%m/%d') %></tr><br>
+               <tr><%= post_comment.comment %></tr><br>
+             </tbody>
+           </table>
+          <% end %>
           <div class="flex align-center pl5">
             <%= link_to "レビューする", new_trader_post_path(@trader), class: "btn btn-success" %>
           </div>
-         <div>
-            <% @post_comments.each do |post_comment| %>
-              <%= post_comment.customer.last_name %>
-              <%= post_comment.comment %>
-              <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-            <% end %>
-          </div>   
         </div>
-        
+        <% end %>
     </div>
 </div>  

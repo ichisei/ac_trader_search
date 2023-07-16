@@ -8,6 +8,7 @@ class Trader::TradersController < ApplicationController
   def edit
     @trader = Trader.find(params[:id])
     @areas = Area.all
+    @machines = Machine.all
   end
 
   def update
@@ -19,7 +20,7 @@ class Trader::TradersController < ApplicationController
   private
 
   def trader_params
-    params.require(:trader).permit(:company_name, :company_name_kana, :post_code, :address, :telephone_number, :compatible_machine, :public_relations, :profile_image, area_ids: [])
+    params.require(:trader).permit(:company_name, :company_name_kana, :post_code, :address, :telephone_number, :compatible_machine, :public_relations, :profile_image, area_ids: [], machine_ids: [])
   end
 
 end
