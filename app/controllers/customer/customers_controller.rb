@@ -18,7 +18,7 @@ class Customer::CustomersController < ApplicationController
 
   def show
     @trader = Trader.find(params[:id])
-    @post_comments = @trader.posts
+    @posts = @trader.posts
   end
 
   private
