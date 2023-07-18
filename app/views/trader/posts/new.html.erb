@@ -5,11 +5,11 @@
 　<div class="row">
     <div class="col-md-10">
       <div class="form-group">
-        <%= form_with model: [@trader, @comment, @rating] do |f| %>
+        <%= form_with model: [@trader, @comment, @rating], url: trader_posts_path, method: :post do |f| %>
         <%= f.text_area :comment, rows: '10', class: "w-1000", placeholder: "コメントをここに" %>
     　　<%# if trader.id.nil? %>
     　　  <div class="form-group row" id="star">
-          <%= f.label :rating %>
+          <%= f.label :rating, " 評価 " %>
           <%= f.hidden_field :rating, id: :review_star, class: 'form-control' %>
           <div id="post_raty"></div>
 　　　　</div>

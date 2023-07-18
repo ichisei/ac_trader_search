@@ -2,6 +2,7 @@ class Trader::PostsController < ApplicationController
 
   def new
     @comment = Post.new
+    @rating = Post.new
     @trader = Trader.find(params[:trader_id])
 
   end

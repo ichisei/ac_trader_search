@@ -64,22 +64,7 @@
           <table>
             <tbody>
               <tr>
-               <div id="star_<%= book.id %>"></div>
-               <script>
-               $(document).on('turbolinks:load', function() {
-                 let elem = document.querySelector('#star_<%= post.id %>');
-                 if (elem == null) return;
-  
-                 lem.innerHTML = "";
-                 let opt = {  
-                   starOn: "<%= asset_path('star-on.png') %>",
-                   starOff: "<%= asset_path('star-off.png') %>",
-                   score: "<%= post.star %>",
-                   readOnly: true,
-                 };
-                  raty(elem, opt);
-               });
-               </script>
+                <%= render "trader/posts/rating", post: post %>
               </tr>
               <tr><%= post.customer.last_name %>　様　　　</tr>
               <tr><%= post.created_at.strftime('%Y/%m/%d') %></tr><br>
