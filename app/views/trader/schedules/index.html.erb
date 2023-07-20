@@ -1,0 +1,33 @@
+<!--カレンダー-->
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>対応可能日</h1>
+    </div>
+    <div class="col-12 mt-3">
+
+    　<%= form_with model: @schedule, url: schedules_path do |f| %>
+        <div class="field">
+          <%= f.label :start_time, '対応可能日' %>
+          <%= f.date_field :start_time %>
+        </div>
+        <div class="actions">
+          <%= f.submit "入力" %>
+        </div>
+      <% end %>
+
+
+      <%= month_calendar events: @schedules do |date, schedules| %>
+        <%= date.day %>
+          <% schedules.each do |schedule| %>
+            <% if schedule.start_time.present? %>
+            <div>
+              〇
+            </div>
+            <% end %>
+          <% end %>
+      <% end %>
+      <%= link_to '削除',schedule_path(trader.id), method: :delete, data: { confirm: '本当に?' } %>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import "../stylesheets/simple_calendar";
 import "../stylesheets/application";
 
 Rails.start()

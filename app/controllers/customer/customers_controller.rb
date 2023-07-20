@@ -14,6 +14,9 @@ class Customer::CustomersController < ApplicationController
     else
        @traders = Trader.all
     end
+
+    search_date = "2023-07-20"
+    traders = Trader.joins(:schedules).merge(Schedule.where(start_time: search_date.in_time_zone.all_day))
   end
 
   def show

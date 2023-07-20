@@ -1,13 +1,36 @@
-<div class="container-md">
+<div class='container px-5 px-sm-0'>
   <div class= "row">
-  　<div class= "col">
-  　  <h2>業者一覧</h2>
+    <div class='col-md-3'>
+        <div class="card">
+          <div class="search_card">
+          <div class="card-body">
 
+      <% if customer_signed_in? %>
+      <h4>検索</h4>
+        <%= form_with method: :get, url: customers_path do |f|  %>
+  　     <div class="form-group">
+                 <%= f.label :area_ids, '対応可能エリア' %>
+                 <%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
+                <div class="mb-5"></div>
+                 <%= f.label :machine_ids, '対応可能機器' %>
+                 <%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
+                 <div class="mb-5"></div>
+                 <%= f.submit "検索", class: "btn-sm btn-primary" %>
+        </div>
+        <% end %>
+      <% end %>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+    <div class='col-md-8'>
     <table class="table mx-auto">
       <tr>
         <th></th>
         <th>会社名</th>
-        <th>住所</th>
+        <!--<th>住所</th>-->
         <th>対応可能エリア</th>
         <th>対応可能機器</th>
       </tr>
@@ -15,28 +38,31 @@
         <tr>
           <td><%= trader.id %></td>
           <td><%= link_to trader.company_name, customer_path(trader.id) %></td>
-          <td><%= trader.address %></td>
+          <!--<td><%#= trader.address %></td>-->
           <td><%= trader.areas.map(&:compatible_area).join(" / ") %></td>
           <td><%= trader.machines.map(&:possible_machine).join(" / ") %></td>
         </tr>
       <% end %>
     </table>
-    <% if customer_signed_in? %>
-        <h4>検索</h4>
-        <div class="form-group row">
-             <%= form_with method: :get, url: customers_path do |f| %>
-             <table class="table mx-auto">
-             　<tr>
-                 <th><%= f.label :area_ids, '対応可能エリア', class: 'col-md' %></th>
-                 <th><%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
-             　   <th><%= f.label :machine_ids, '対応可能機器', class: 'col-md '%></th>
-                 <th><%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
-                 <th><%= f.submit "検索", class: "btn-sm btn-primary" %></th>
+
+
+
+    <%# if customer_signed_in? %>
+        <!--<h4>検索</h4>-->
+        <!--<div class="form-group row">-->
+             <%#= form_with method: :get, url: customers_path do |f| %>
+        <!--     <table class="table mx-auto">-->
+        <!--     　<tr>-->
+                 <th><%#= f.label :area_ids, '対応可能エリア', class: 'col-md' %></th>
+                 <th><%#= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
+             　   <th><%#= f.label :machine_ids, '対応可能機器', class: 'col-md '%></th>
+                 <th><%#= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
+                 <th><%#= f.submit "検索", class: "btn-sm btn-primary" %></th>
                </tr>
-             </table>
-             <% end %>
-        </div>
-    <% end %>
+        <!--     </table>-->
+             <%# end %>
+        <!--</div>-->
+    <%# end %>
     </div>
   </div>
 </div>
