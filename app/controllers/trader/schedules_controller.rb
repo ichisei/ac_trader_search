@@ -9,12 +9,10 @@ class Trader::SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
-
   def destroy
     @schedule = Schedule.find(params[:id])
-    @Schedule.destroy
+    @schedule.destroy
     redirect_to schedules_path, notice:"削除しました"
-
   end
 
 

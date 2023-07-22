@@ -2,6 +2,7 @@ class Trader::TradersController < ApplicationController
 
   def show
     @trader = Trader.find(params[:id])
+    # @schedules = Schedule.find(params[:id])
 
   end
 
@@ -20,7 +21,7 @@ class Trader::TradersController < ApplicationController
   private
 
   def trader_params
-    params.require(:trader).permit(:company_name, :company_name_kana, :post_code, :address, :telephone_number, :compatible_machine, :public_relations, :profile_image, area_ids: [], machine_ids: [])
+    params.require(:trader).permit(:company_name, :company_name_kana, :post_code, :address, :telephone_number, :compatible_machine, :public_relations, :profile_image, :start_time, area_ids: [], machine_ids: [])
   end
 
 end

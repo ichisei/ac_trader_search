@@ -44,7 +44,7 @@
           </tr>
           <tr>
             <td>対応可能日</td>
-            <td></td>
+            <td><%#= @trader.schedules.map(&:start_time).join(" / ") %></td>
           </tr>
           <tr>
             <td>PR</td>

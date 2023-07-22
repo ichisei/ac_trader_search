@@ -15,6 +15,9 @@
                  <%= f.label :machine_ids, '対応可能機器' %>
                  <%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
                  <div class="mb-5"></div>
+                 <%= f.label :start_time, '対応可能希望日' %>
+                 <%= f.date_field :start_time %>
+                 <div class="mb-5"></div>
                  <%= f.submit "検索", class: "btn-sm btn-primary" %>
         </div>
         <% end %>

@@ -15,8 +15,6 @@
           <%= f.submit "入力" %>
         </div>
       <% end %>
-
-
       <%= month_calendar events: @schedules do |date, schedules| %>
         <%= date.day %>
           <% schedules.each do |schedule| %>
@@ -24,10 +22,12 @@
             <div>
               〇
             </div>
+            <%= link_to '削除',schedule_path(schedule.id), method: :delete, data: { confirm: '本当に?' } %>
             <% end %>
           <% end %>
+
       <% end %>
-      <%= link_to '削除',schedule_path(trader.id), method: :delete, data: { confirm: '本当に?' } %>
+
     </div>
   </div>
 </div>
