@@ -1,8 +1,14 @@
 class Trader::SchedulesController < ApplicationController
 
   def create
-    Schedule.new(start_time: params[:start_time], trader_id: current_trader.id).save
-    redirect_to  edit_trader_path(current_trader.id)
+    @schedule = Schedule.new(start_time: params[:start_time], trader_id: current_trader.id)
+    @schedule.save
+    
+    # if @schedule.save
+    #   redirect_to request.referer
+    # else
+    #   render :index
+    # end
   end
 
   def index
@@ -12,7 +18,7 @@ class Trader::SchedulesController < ApplicationController
   def destroy
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
-    redirect_to schedules_path, notice:"削除しました"
+    redirect_to request.referer
   end
 
 

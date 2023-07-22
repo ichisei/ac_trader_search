@@ -1,5 +1,5 @@
 class Trader::MachinesController < ApplicationController
-  
+
   def create
     @machine = Machine.new(machine_params)
     @machines = Machine.all
@@ -20,7 +20,7 @@ class Trader::MachinesController < ApplicationController
   end
 
   private
-  
+
   def machine_params
     params.require(:machine).permit(:possible_machine)
   end

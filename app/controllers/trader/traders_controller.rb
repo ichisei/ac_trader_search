@@ -2,8 +2,6 @@ class Trader::TradersController < ApplicationController
 
   def show
     @trader = Trader.find(params[:id])
-    # @schedules = Schedule.find(params[:id])
-
   end
 
   def edit

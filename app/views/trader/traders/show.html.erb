@@ -44,7 +44,11 @@
           </tr>
           <tr>
             <td>対応可能日</td>
-            <td><%#= @trader.schedules.map(&:start_time).join(" / ") %></td>
+            <td><% @trader.schedules.each do |schedule| %>
+                <%= schedule.start_time.strftime("%m月%d日") %>
+                <% end %>
+            </td>
+            <%#= @trader.schedules.map(&:start_time).join(" / ") %>
           </tr>
           <tr>
             <td>PR</td>
