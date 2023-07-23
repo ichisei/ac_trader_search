@@ -38,6 +38,7 @@ class Customer::CustomersController < ApplicationController
 
   def show
     @trader = Trader.find(params[:id])
+    @schedules = @trader.schedules.order(start_time: :asc)
     @posts = @trader.posts
   end
 

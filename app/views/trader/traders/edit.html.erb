@@ -65,7 +65,7 @@
         </div>
         <!--<div class="flex align-center p.30">-->
           <div class="d-grid gap-2">
-          <%= link_to "対応可能日入力",  schedules_path, class: "btn btn-outline-primary" %>
+          <%= link_to "対応可能日入力",  schedules_path, class: "btn btn-outline-primary", data: { confirm: "【確認】新規データ登録の場合は入力データが無効になります"} %>
         </div>
         <div class="form-group row mt-3">
              <%= f.label :password_confirmation, "PR・実績・資格等" %>

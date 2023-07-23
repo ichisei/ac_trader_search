@@ -1,74 +1,49 @@
-<div class='container px-5 px-sm-0'>
+<div class='container'>
   <div class= "row">
-    <div class='col-md-3'>
+    <div class='col-md-2'>
+      <% if customer_signed_in? %>
         <div class="card">
           <div class="search_card">
-          <div class="card-body">
-
-      <% if customer_signed_in? %>
-      <h4>検索</h4>
-        <%= form_with method: :get, url: customers_path do |f|  %>
-  　     <div class="form-group">
-                 <%= f.label :area_ids, '対応エリア' %>
-                 <%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
+            <div class="card-body">
+            <h4>検索</h4>
+              <%= form_with method: :get, url: customers_path do |f|  %>
+  　           <div class="form-group">
+                <%= f.label :area_ids, '対応エリア' %><br>
+                <%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
                 <div class="mb-5"></div>
-                 <%= f.label :machine_ids, '対応機器' %>
-                 <%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
-                 <div class="mb-5"></div>
-                 <%= f.label :start_time, '対応希望日' %>
-                 <%= f.date_field :start_time %>
-                 <div class="mb-5"></div>
-                 <%= f.submit "検索", class: "btn-sm btn-primary" %>
+                <%= f.label :machine_ids, '対応機器' %><br>
+                <%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
+                <div class="mb-5"></div>
+                <%= f.label :start_time, '対応希望日' %><br>
+                <%= f.date_field :start_time %>
+                <div class="mb-5"></div>
+                <%= f.submit "検索", class: "btn-sm btn-primary" %>
+              </div>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <% end %>
       <% end %>
-        </div>
-        </div>
-        </div>
-        </div>
-
-
-    <div class='col-md-8'>
+    </div>
+    <div class='col-md-9'>
     <table class="table mx-auto">
-      <tr>
-        <th></th>
-        <th>会社名</th>
-        <!--<th>住所</th>-->
-        <th>対応可能エリア</th>
-        <th>対応可能機器</th>
-      </tr>
-      <% @traders.each do |trader| %>
+      <thead>
         <tr>
-          <td><%= trader.id %></td>
-          <td><%= link_to trader.company_name, customer_path(trader.id) %></td>
-          <!--<td><%#= trader.address %></td>-->
-          <td><%= trader.areas.map(&:compatible_area).join(" / ") %></td>
-          <td><%= trader.machines.map(&:possible_machine).join(" / ") %></td>
+          <th>会社名</th>
+          <th>対応可能エリア</th>
+          <th>対応可能機器</th>
         </tr>
+      </thead>
+      <% @traders.each do |trader| %>
+      <tbody>
+        <tr>
+          <td><%= link_to trader.company_name, customer_path(trader.id) %></td>
+          <td><%= trader.areas.map(&:compatible_area).join(" ／ ") %></td>
+          <td><%= trader.machines.map(&:possible_machine).join(" ／ ") %></td>
+        </tr>
+      </tbody>
       <% end %>
     </table>
-
-
-
-    <%# if customer_signed_in? %>
-        <!--<h4>検索</h4>-->
-        <!--<div class="form-group row">-->
-             <%#= form_with method: :get, url: customers_path do |f| %>
-        <!--     <table class="table mx-auto">-->
-        <!--     　<tr>-->
-                 <th><%#= f.label :area_ids, '対応可能エリア', class: 'col-md' %></th>
-                 <th><%#= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
-             　   <th><%#= f.label :machine_ids, '対応可能機器', class: 'col-md '%></th>
-                 <th><%#= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %></th>
-                 <th><%#= f.submit "検索", class: "btn-sm btn-primary" %></th>
-               </tr>
-        <!--     </table>-->
-             <%# end %>
-        <!--</div>-->
-    <%# end %>
     </div>
   </div>
 </div>
-
-
-
