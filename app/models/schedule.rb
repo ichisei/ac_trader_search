@@ -4,8 +4,10 @@ class Schedule < ApplicationRecord
 
   #今日より前の日程は入力不可
   validate :date_before_start
-  #同じ日は入力不可
-  validates :start_time, uniqueness:
+  #日程未入力は不可、同じ日は入力不可
+  validates :start_time, presence: true
+  
+  # validates :start_time, presence: true
 
 
   def date_before_start

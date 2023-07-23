@@ -37,9 +37,9 @@ class DeviseCreateTraders < ActiveRecord::Migration[6.1]
       t.string :post_code,           null: false
       t.string :address,             null: false
       t.string :telephone_number,    null: false
-      t.integer :compatible_machine, null: false
+      t.integer :compatible_machine
       # t.boolean :compatible_machine, null: false, defaurt: true
-      t.text :public_relations,      null: false
+      t.text :public_relations
       t.timestamps null: false
     end
 

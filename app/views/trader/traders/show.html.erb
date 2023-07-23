@@ -39,16 +39,16 @@
             <td><%= @trader.areas.map(&:compatible_area).join(" / ") %></td>
           </tr>
           <tr>
-            <td>対応機器</td>
+            <td>対応可能機器</td>
             <td><%= @trader.machines.map(&:possible_machine).join(" / ") %></td>
           </tr>
           <tr>
             <td>対応可能日</td>
-            <td><% @trader.schedules.each do |schedule| %>
-                <%= schedule.start_time.strftime("%m月%d日") %>
-                <% end %>
-            </td>
-            <%#= @trader.schedules.map(&:start_time).join(" / ") %>
+            <td><%= @trader.schedules.map{|s| s.start_time.strftime("%-m月%-d日")}.join(" / ") %></td>
+                <!--上コードは以下と同じ意味-->
+                <%# @trader.schedules.each do |schedule| %>
+                <%#= schedule.start_time.strftime("%m月%d日") %>
+                <%# end %>
           </tr>
           <tr>
             <td>PR</td>

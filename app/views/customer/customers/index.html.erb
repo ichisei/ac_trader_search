@@ -9,13 +9,13 @@
       <h4>検索</h4>
         <%= form_with method: :get, url: customers_path do |f|  %>
   　     <div class="form-group">
-                 <%= f.label :area_ids, '対応可能エリア' %>
+                 <%= f.label :area_ids, '対応エリア' %>
                  <%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
                 <div class="mb-5"></div>
-                 <%= f.label :machine_ids, '対応可能機器' %>
+                 <%= f.label :machine_ids, '対応機器' %>
                  <%= f.collection_select :machine_ids, @machines, :id, :possible_machine, prompt: "選択して下さい", selected: nil, class: 'form-control' %>
                  <div class="mb-5"></div>
-                 <%= f.label :start_time, '対応可能希望日' %>
+                 <%= f.label :start_time, '対応希望日' %>
                  <%= f.date_field :start_time %>
                  <div class="mb-5"></div>
                  <%= f.submit "検索", class: "btn-sm btn-primary" %>
