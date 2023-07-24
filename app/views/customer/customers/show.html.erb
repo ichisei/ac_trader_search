@@ -55,13 +55,11 @@
         </div>
 
         <% if customer_signed_in? %>
-        <div class="col align-self-center mt-5">
-          <h6>＜レビュー履歴＞</h6>
-
+        <div class="col align-self-center mt-5 ml-5">
+          <h6>＜レビュー＞</h6>
           <% @posts.each do |post| %>
           <div class="card ml-5">
             <div class="card-body">
-              
               <%= render "trader/posts/rating", post: post %>
               <div class="card-text">
               <%= post.customer.last_name %>　様
@@ -70,9 +68,8 @@
               </div>
             </div>
           </div>
-          
           <% end %>
-          <div class="m-3">
+          <div class="mt-3 mx-5">
             <%= link_to "レビューする", new_trader_post_path(@trader), class: "btn btn-success" %>
           </div>
         </div>

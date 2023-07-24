@@ -1,0 +1,50 @@
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">会社名</th>
+            <td><%= trader.company_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">カナ</th>
+            <td><%= trader.company_name_kana %></td>
+          </tr>
+          <tr>
+            <th scope="row">郵便番号</th>
+            <td>〒<%= trader.post_code %></td>
+          </tr>
+          <tr>
+            <th scope="row">住所</th>
+            <td><%= trader.address %></td>
+          </tr>
+          <tr>
+            <th scope="row">電話番号</th>
+            <td><%= trader.telephone_number %></td>
+          </tr>
+          <tr>
+            <th scope="row">E-mail</th>
+            <td><%= trader.email %></td>
+          </tr>
+
+          <tr>
+            <th scope="row">対応エリア</th>
+            <td><%= trader.areas.map(&:compatible_area).join(" / ") %></td>
+          </tr>
+          <tr>
+            <th scope="row">対応機器</th>
+
+            <td><%= trader.machines.map(&:possible_machine).join(" / ") %></td>
+          </tr>
+          <tr>
+            <th scope="row">対応可能日</th>
+            <td><%= schedules.map{|s| s.start_time.strftime("%-m月%-d日")}.join(" ／ ") %></td>
+                <!--上コードは以下と同じ意味-->
+                <%# @trader.schedules.each do |schedule| %>
+                <%#= schedule.start_time.strftime("%m月%d日") %>
+                <%# end %>
+          </tr>
+          <tr>
+            <th scope="row">Ｐ　Ｒ</th>
+            <td><%= trader.public_relations %></td>
+          </tr>
+        </tbody>
+      </table>

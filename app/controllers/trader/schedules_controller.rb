@@ -4,7 +4,7 @@ class Trader::SchedulesController < ApplicationController
     #start_timeが存在する？if文
     if params[:start_time].present?
       @schedule = Schedule.new(start_time: params[:start_time], trader_id: current_trader.id)
-      @schedule.save!
+      @schedule.save
     end
     redirect_to request.referer
   end

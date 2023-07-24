@@ -4,6 +4,7 @@ class Trader::TradersController < ApplicationController
     @trader = Trader.find(params[:id])
     #start_timeを日付順に並び替え
     @schedules = @trader.schedules.order(start_time: :asc)
+    @posts = @trader.posts
   end
 
   def edit

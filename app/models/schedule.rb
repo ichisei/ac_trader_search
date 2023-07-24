@@ -6,7 +6,7 @@ class Schedule < ApplicationRecord
   validate :date_before_start
   #日程未入力は不可、同じ日は入力不可
   validates :start_time, presence: true
-  
+
   # validates :start_time, presence: true
 
 
