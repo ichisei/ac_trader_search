@@ -1,43 +1,9 @@
 class Customer::CustomersController < ApplicationController
 
-  def index
-    @areas = Area.all
-    @machines = Machine.all
-
-    if params[:area_ids].present? && params[:machine_ids].present? && params[:start_time].present?
-       @traders = Trader.joins(:areas).merge(Area.where(id: params[:area_ids].presence))
-       @traders = @traders.joins(:machines).merge(Machine.where(id: params[:machine_ids].presence))
-       @traders = @traders.joins(:schedules).merge(Schedule.where(start_time: (params[:start_time].to_datetime)..(params[:start_time].to_datetime.end_of_day)))
-
-    elsif params[:area_ids].present? && params[:machine_ids].present? && params[:start_time].blank?
-       @traders = Trader.joins(:areas).merge(Area.where(id: params[:area_ids].presence))
-       @traders = @traders.joins(:machines).merge(Machine.where(id: params[:machine_ids].presence))
-
-    elsif params[:area_ids].present? && params[:machine_ids].blank? && params[:start_time].present?
-       @traders = Trader.joins(:areas).merge(Area.where(id: params[:area_ids].presence))
-       @traders = @traders.joins(:schedules).merge(Schedule.where(start_time: (params[:start_time].to_datetime)..(params[:start_time].to_datetime.end_of_day)))
-
-    elsif params[:area_ids].blank? && params[:machine_ids].present? && params[:start_time].present?
-       @traders = Trader.joins(:machines).merge(Machine.where(id: params[:machine_ids].presence))
-       @traders = @traders.joins(:schedules).merge(Schedule.where(start_time: (params[:start_time].to_datetime)..(params[:start_time].to_datetime.end_of_day)))
-
-    elsif params[:area_ids].present? && params[:machine_ids].blank? && params[:start_time].blank?
-       @traders = Trader.joins(:areas).merge(Area.where(id: params[:area_ids].presence))
-
-    elsif params[:area_ids].blank? && params[:machine_ids].present? && params[:start_time].blank?
-       @traders = Trader.joins(:machines).merge(Machine.where(id: params[:machine_ids].presence))
-
-    elsif params[:area_ids].blank? && params[:machine_ids].blank? && params[:start_time].present?
-       @traders = Trader.joins(:schedules).merge(Schedule.where(start_time: (params[:start_time].to_datetime)..(params[:start_time].to_datetime.end_of_day)))
-
-    else
-       @traders = Trader.all
-    end
-
-  end
-
   def show
-    @trader = Trader.find(params[:id])
+    @customer = Customer.find(params[:id])
+    #@trader = Trader.find(params[:id])
+    #レコードの開始時間が早い順にリスト取得※viewで日程順に表示
     @schedules = @trader.schedules.order(start_time: :asc)
     @posts = @trader.posts
   end

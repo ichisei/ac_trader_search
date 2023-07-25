@@ -20,8 +20,13 @@ class Trader::PostsController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to trader_path(@post.trader)
+  end
 
+  private
   def post_params
     params.require(:post).permit(:comment, :rating)
   end

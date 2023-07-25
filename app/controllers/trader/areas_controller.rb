@@ -1,5 +1,5 @@
 class Trader::AreasController < ApplicationController
-  
+
   def create
     @area = Area.new(area_params)
     @areas = Area.all
@@ -20,7 +20,7 @@ class Trader::AreasController < ApplicationController
   end
 
   private
-  
+
   def area_params
     params.require(:area).permit(:compatible_area)
   end

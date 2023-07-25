@@ -15,3 +15,8 @@ area_names = %w(
 area_names.each do |name|
   Area.create!(compatible_area: name)
 end
+
+Admin.create!(
+   email: "ac@ac.com",
+   password: "actsearch",
+)

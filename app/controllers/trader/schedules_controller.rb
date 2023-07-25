@@ -1,7 +1,7 @@
 class Trader::SchedulesController < ApplicationController
 
   def create
-    #start_timeが存在する？if文
+    #日程(start_time)未入力に対するif文
     if params[:start_time].present?
       @schedule = Schedule.new(start_time: params[:start_time], trader_id: current_trader.id)
       @schedule.save

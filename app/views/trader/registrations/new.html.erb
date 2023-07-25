@@ -1,56 +1,54 @@
 <div class="container mt-3">
 <h2>新規会員登録</h2>
 <br>
-<div class="row">
+  <div class="row">
   <%= form_with model: @trader,url: trader_registration_path, method: :post do |f| %>
   <%= render "customer/shared/error_messages", resource: resource %>
-    
-      <div class="col-md-12">
-        <div class="form-group col-7">
-            <%= f.label :company_name, "会社名" %>
-            <%= f.text_field :company_name, autofocus: true ,:placeholder =>"空調職人株式会社", size: "50", class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :company_name_kana, "カナ" %>
-            <%= f.text_field :company_name_kana, :placeholder =>"クウチョウショクニン(カブ", size: "50", class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :post_code, "郵便番号" %>
-            <%= f.text_field :post_code, :placeholder =>"8888888", size: "5", class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :address, "住所" %>
-            <%= f.text_field :address, :placeholder =>"8888888", size: "50", class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :telephone_number, "電話番号" %>
-            <%= f.text_field :telephone_number, :placeholder =>"09088888888", size: "20", class: "form-control" %>
-        </div>
-        <div class="form-group col-6">
-            <%= f.label :email %>
-            <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com", size: "30", class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :password, "パスワード (6文字以上)" %>
-            <%= f.password_field :password, class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.label :password_confirmation, "パスワード (確認用)" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-        </div>
-        <div class="form-group col-7">
-            <%= f.submit '新規登録' %>
-        </div>
+    <div class="col-md-12">
+      <div class="form-group col-7">
+        <%= f.label :company_name, "会社名" %>
+        <%= f.text_field :company_name, autofocus: true ,:placeholder =>"空調職人株式会社", size: "50", class: "form-control" %>
       </div>
-    
+      <div class="form-group col-7">
+        <%= f.label :company_name_kana, "カナ" %>
+        <%= f.text_field :company_name_kana, :placeholder =>"クウチョウショクニン(カブ", size: "50", class: "form-control" %>
+      </div>
+      <div class="form-group col-7">
+        <%= f.label :post_code, "郵便番号" %>
+        <%= f.text_field :post_code, :placeholder =>"8888888", size: "5", class: "form-control" %>
+      </div>
+      <div class="form-group col-7">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, :placeholder =>"8888888", size: "50", class: "form-control" %>
+      </div>
+      <div class="form-group col-7">
+        <%= f.label :telephone_number, "電話番号" %>
+        <%= f.text_field :telephone_number, :placeholder =>"09088888888", size: "20", class: "form-control" %>
+      </div>
+      <div class="form-group col-6">
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com", size: "30", class: "form-control" %>
+      </div>
+      <div class="form-group col-7">
+        <%= f.label :password, "パスワード (6文字以上)" %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <div class="form-group col-7">
+        <%= f.label :password_confirmation, "パスワード (確認用)" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="form-group col-7">
+        <%= f.submit '新規登録' %>
+      </div>
+    </div>
   <% end %>
-</div>
-    <div class="row">
+  </div>
+  <div class="row">
     <div class="form-group col-5">
       <h4>既に登録済みの方</h4>
-    <div>
-      <%= link_to "こちら", new_trader_session_path, class: "underline" %>からログインしてください。
+      <div>
+        <%= link_to "こちら", new_trader_session_path, class: "underline" %>からログインしてください。
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
 </div>
