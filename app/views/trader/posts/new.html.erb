@@ -1,11 +1,9 @@
-<div class="container mt-3">
+<div class="container mt-3 text-center">
 <h2>レビュー入力</h2>
 <br>
 　<div class="row">
-    <div class="col-md-10">
-      <div class="form-group">
-        <%= form_with model: [@trader, @comment, @rating], url: trader_posts_path, method: :post do |f| %>
-        <%= f.text_area :comment, rows: '10', class: "w-1000", placeholder: "コメントをここに" %>
+    <div class="col-3 offset-5">
+      <%= form_with model: [@trader, @comment, @rating], url: trader_posts_path, method: :post do |f| %>
     　　<%# if trader.id.nil? %>
     　　  <div class="form-group row" id="star">
           <%= f.label :rating, " 評価 " %>
@@ -16,7 +14,6 @@
           $(document).on('turbolinks:load', function() {
             let elem = document.querySelector('#post_raty');
             if (elem == null) return;
-
             elem.innerHTML = ""
             let opt = {
               starOn: "<%= asset_path('star-on.png') %>",
@@ -27,7 +24,10 @@
             raty(elem, opt);
           });
         </script>
-        <div class="form-group">
+      </div>
+    <div class="form-group col-6 offset-3">
+        <%= f.text_area :comment, rows: '5', class: "w-100", placeholder: "コメントをここに" %>
+        <div class="form-group mt-5">
           <%= f.submit '登   録', class: "btn btn-primary btn-block" %>
         </div>
   　　　　　<% end %>
@@ -35,4 +35,3 @@
 
 　　</div>
 　</div>
-</div>

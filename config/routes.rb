@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :machines, only: [:index, :create, :destroy]
     get "home" => "homes#top", as: 'pro'
   end
-  
+
   get "admin/home" => "admin/homes#top", as: 'admin'
 
 

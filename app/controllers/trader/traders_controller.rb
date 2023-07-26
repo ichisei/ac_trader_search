@@ -1,5 +1,5 @@
 class Trader::TradersController < ApplicationController
-  
+
   def index
     @areas = Area.all
     @machines = Machine.all
