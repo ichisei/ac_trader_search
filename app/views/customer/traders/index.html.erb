@@ -37,7 +37,7 @@
         <% @traders.each do |trader| %>
         <tbody>
           <tr>
-            <td><%= link_to trader.company_name, trader_path(trader) %></td>
+            <td><%= link_to trader.company_name, customer_trader_path(trader) %></td>
             <td><%= trader.areas.map(&:compatible_area).join(" ／ ") %></td>
             <td><%= trader.machines.map(&:possible_machine).join(" ／ ") %></td>
           </tr>

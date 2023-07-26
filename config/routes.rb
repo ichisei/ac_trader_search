@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
 
-  scope module: :customer do
+  namespace :customer do
+    resources :traders, only: [:index, :show]
     resources :customers, only: [:index, :show]
   end
 

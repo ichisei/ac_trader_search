@@ -1,12 +1,22 @@
 @use '~bootstrap/scss/bootstrap';
 
+// div {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
 .img-hidden {
   height: 470px;
   overflow: hidden;
 }
 
+.card-text {
+  font-size: 13px;
+}
+
 .search_card {
-  background-color: #CCFFFF;
   font-size: 13px;
 }
 

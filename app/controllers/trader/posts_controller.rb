@@ -14,7 +14,7 @@ class Trader::PostsController < ApplicationController
     post.trader_id = trader.id
 
     if post.save
-      redirect_to trader_path(trader.id)
+      redirect_to  customer_trader_path(trader.id)
     else
       render :new
     end
