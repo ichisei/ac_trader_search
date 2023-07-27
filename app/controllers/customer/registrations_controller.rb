@@ -52,11 +52,11 @@ class Customer::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    customers_path
+    customer_traders_path
   end
 
   def after_update_path_for(resource)
-    customers_path
+    root_path
   end
   #   super(resource)
   # end

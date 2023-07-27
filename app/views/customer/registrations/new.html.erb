@@ -25,19 +25,19 @@
   <div class="row">
     <div class="col-4 offset-md-1 mt-3">
       <label>メールアドレス</label>
-      <%= f.label :email %>
+      <%= f.label :email, "(Email)" %>
       <%= f.email_field :email, autocomplete: "email", :placeholder =>"888@888.com", class: "form-control" %>
     </div>
   </div>
   <div class="row justify-content-evenly">
     <div class="col-4 offset-md-1 mt-3">
-      <label> パスワード (6文字以上)</label>
-      <%= f.label :password %>
+      <label> パスワード</label>
+      <%= f.label :password, "(6文字以上)"  %>
        <%= f.password_field :password, class: "form-control" %>
     </div>
     <div class="col-4 offset-md-1 mt-3">
-      <label> パスワード (確認用)</label>
-      <%= f.label :password_confirmation %>
+      <label> パスワード</label>
+      <%= f.label :password_confirmation, "(確認用)" %>
       <%= f.password_field :password_confirmation, class: "form-control" %><br>
     </div>
   </div>

@@ -43,8 +43,6 @@ class Customer::TradersController < ApplicationController
     @posts = @trader.posts
   end
 
-
-
   private
 
   def trader_params

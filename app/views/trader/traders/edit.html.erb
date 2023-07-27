@@ -5,11 +5,15 @@
   <%= render "customer/shared/error_messages", resource: @trader %>
   <div class="row">
     <div class="col-md-2">
-      <div class="form-group col-8">
+      <div class="form-group col-2">
         <%= image_tag @trader.get_profile_image(150, 150) %>
       </div>
     </div>
     <div class="col-md-5">
+      <div class="form-group col-10">
+        <%= f.label :image, "画像"%>
+        <%= f.file_field :profile_image, accept: 'image/*' %>
+      </div>
       <div class="form-group col-10">
         <%= f.label :company_name, "会社名" %>
         <%= f.text_field :company_name, autofocus: true ,:placeholder =>"空調職人株式会社", size: "30", class: "form-control ml-4" %>

@@ -23,7 +23,7 @@ class Trader::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to trader_path(@post.trader)
+    redirect_to customer_trader_path(@post.trader)
   end
 
   private

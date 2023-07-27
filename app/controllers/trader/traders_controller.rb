@@ -1,4 +1,6 @@
 class Trader::TradersController < ApplicationController
+  
+  before_action :is_matching_login_trader, only: [:edit, :update]
 
   def index
     @areas = Area.all
@@ -59,6 +61,13 @@ class Trader::TradersController < ApplicationController
 
   def trader_params
     params.require(:trader).permit(:company_name, :company_name_kana, :post_code, :address, :telephone_number, :compatible_machine, :public_relations, :profile_image, :start_time, area_ids: [], machine_ids: [])
+  end
+
+  def is_matching_login_trader
+    trader = Trader.find(params[:id])
+    unless trader.id == current_trader.id
+      redirect_to traders_path
+    end
   end
 
 end
