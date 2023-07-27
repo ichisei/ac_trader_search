@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 2023_07_25_015039) do
     t.string "post_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
-    t.integer "compatible_machine"
     t.text "public_relations"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
