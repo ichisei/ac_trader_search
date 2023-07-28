@@ -1,14 +1,14 @@
-<section class="container trader_top">
+<section class="container">
   <div class="row">
-    <div class="col-md-8">
-      <%= image_tag('top1.jpg', style: 'width: 100%; height: 100%;') %>
+    <div class="col-md-8 my-5">
+      <%= image_tag('Admin.jpg', style: 'width: 100%; height: 100%;') %>
     </div>
-    <div class="col-md-4 py-5 text-white">
-      <div class="py-4">
-          <%= link_to '対応可能機器',machines_path, class: "btn btn-warning btn-sm btn-block mb-3 sign_in" %>
+    <div class="col-md-4 my-5">
+      <div class="py-5">
+          <%= link_to '対応可能機器',machines_path, class: "btn btn-primary btn-sm btn-block my-5" %>
       </div>
       <div>
-          <%= link_to '対応可能エリア',areas_path, class: "btn btn-danger btn-sm btn-block sign_up" %>
+          <%= link_to '対応可能エリア',areas_path, class: "btn btn-success btn-sm btn-block" %>
       </div>
     </div>
   </div>
