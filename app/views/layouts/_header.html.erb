@@ -10,12 +10,12 @@
         <% if customer_signed_in? %>
           <li>
             <%= link_to  customer_traders_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-air-conditioner"></i> 業者一覧
+              <i class="fas fa-hard-hat"></i> 業者一覧
             <% end %>
           </li>
           <li>
             <%= link_to pro_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-air-conditioner"></i> 業者の方はコチラ
+              <i class="fab fa-themeco"></i> 業者の方はコチラ
             <% end %>
           </li>
           <li>
@@ -23,11 +23,16 @@
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
-
+          <div class="text-white mt-2 ml-5">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="text-white mt-2 ml-1">
+            <%= current_customer.last_name + current_customer.first_name %>さん
+          </div>
         <% elsif request.path == "/home" || request.path == "/traders/sign_in" || request.path == "/traders/sign_up" %>
           <li>
             <%= link_to traders_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-air-conditioner"></i> 業者一覧
+              <i class="fas fa-hard-hat"></i> 業者一覧
             <% end %>
           </li>
           <li>
@@ -38,12 +43,12 @@
         <% elsif trader_signed_in? %>
           <li>
             <%= link_to traders_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-air-conditioner"></i> 業者一覧
+              <i class="fas fa-hard-hat"></i> 業者一覧
             <% end %>
           </li>
           <li>
             <%= link_to trader_path(current_trader.id),class: 'nav-link text-light' do %>
-              <i class="fas fa-air-conditioner"></i> マイページ
+              <i class="fab fa-themeco"></i> マイページ
             <% end %>
           </li>
           <li>
@@ -51,6 +56,12 @@
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
+          <div class="text-white mt-2 ml-5">
+            <i class="fas fa-tools"></i>
+          </div>
+          <div class="text-white mt-2 ml-1">
+            <%= current_trader.company_name %>さん
+          </div>
         <% elsif admin_signed_in? %>
           <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
@@ -60,12 +71,12 @@
         <% else %>
           <li>
             <%= link_to traders_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-air-conditioner"></i> 業者一覧
+              <i class="fas fa-hard-hat"></i> 業者一覧
             <% end %>
           </li>
           <li>
             <%= link_to pro_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> 業者の方はコチラ
+              <i class="fab fa-themeco"></i> 業者の方はコチラ
             <% end %>
           </li>
           <li>
