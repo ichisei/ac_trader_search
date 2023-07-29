@@ -4,7 +4,9 @@ class Trader::SchedulesController < ApplicationController
     #日程(start_time)未入力に対するif文
     if params[:start_time].present?
       @schedule = Schedule.new(start_time: params[:start_time], trader_id: current_trader.id)
+    if !Schedule.where(:start_time => @schedule.start_time.to_date.beginning_of_day..@schedule.start_time.to_date.end_of_day,:trader_id => current_trader.id).exists?
       @schedule.save
+    end
     end
     redirect_to request.referer
   end
