@@ -22,6 +22,6 @@ ja:
       already_confirmed: "メールアドレスは既に登録されています。"
       # not_found: "not found"
       # not_locked: "was not locked"
-      not_saved: 
+      not_saved:
         one: "エラーが発生しました。以下ご確認お願いいたします。"
         other: "エラーが発生しました。以下ご確認お願いいたします。"
