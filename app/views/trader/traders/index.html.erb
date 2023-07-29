@@ -6,7 +6,7 @@
           <div class="search_card">
             <div class="card-body text-center">
             <h4>検索</h4>
-              <%= form_with method: :get, url: traders_path do |f| %>
+              <%= form_with method: :get, url: customer_traders_path do |f| %>
   　           <div class="form-group">
                 <%= f.label :area_ids, '対応エリア' %><br>
                 <%= f.collection_select :area_ids, @areas, :id, :compatible_area, prompt: "選択して下さい", selected: nil, class: 'form-control' %>

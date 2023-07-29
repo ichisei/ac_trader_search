@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   namespace :customer do
     resources :traders, only: [:index, :show]
-    resources :customers, only: [:index, :show]
   end
 
   scope module: :trader do
@@ -33,6 +32,9 @@ Rails.application.routes.draw do
   end
 
   get "admin/home" => "admin/homes#top", as: 'admin'
+  namespace :admin do
+    resources :traders, only: [:index, :show]
+  end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

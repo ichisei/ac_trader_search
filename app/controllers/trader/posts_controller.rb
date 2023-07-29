@@ -12,7 +12,6 @@ class Trader::PostsController < ApplicationController
     post = Post.new(post_params)
     post.customer_id = current_customer.id
     post.trader_id = trader.id
-
     if post.save
       redirect_to  customer_trader_path(trader.id)
     else
@@ -27,6 +26,7 @@ class Trader::PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:comment, :rating)
   end

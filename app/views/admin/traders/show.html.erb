@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-10">
         
-        <%= render 'detail', trader: @trader, schedules: @schedules %>
+        <%= render 'trader/traders/detail', trader: @trader, schedules: @schedules %>
 
         <div class="flex align-center pl5">
           <%= link_to "編集する", edit_trader_path(@trader), class: "btn btn-success" if @trader == current_trader %>
@@ -24,8 +24,7 @@
       </div>
     </div>
   </div>
-    <!--♯自分の会社のレビューは見られる-->
-  <% if @trader == current_trader %>
+
   <div class="col mt-3">
   <h6>＜レビュー＞</h6>
     <% @posts.each do |post| %>
@@ -41,5 +40,4 @@
     </div>
     <% end %>
   </div>
-  <% end %>
 </div>
