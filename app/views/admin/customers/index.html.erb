@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class= "row">
+    <div class='col-md-8 offset-2'>
+      <h3>登録カスタマー</h3>
+      <table class="table mx-auto mt-4 ">
+        <thead>
+          <tr>
+            <th>名 前</th>
+            <th>カ ナ</th>
+            <th>メールアドレス</th>
+          </tr>
+        </thead>
+        <% @customers.each do |customer| %>
+        <tbody>
+          <tr>
+            <td><%= customer.last_name %>　<%= customer.first_name %></td>
+            <td><%= customer.last_name_kana %>　<%= customer.first_name_kana %></td>
+            <td><%= customer.email %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

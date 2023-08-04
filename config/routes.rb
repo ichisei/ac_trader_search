@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get "admin/home" => "admin/homes#top", as: 'admin'
   namespace :admin do
     resources :traders, only: [:index, :show]
+    resources :customers, only: [:index]
   end
 
 
