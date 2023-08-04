@@ -31,7 +31,7 @@ class Customer::TradersController < ApplicationController
        @traders = Trader.joins(:schedules).merge(Schedule.where(start_time: (params[:start_time].to_datetime)..(params[:start_time].to_datetime.end_of_day)))
     #条件無し
     else
-       @traders = Trader.all
+       @traders = Trader.all.page(params[:page]).per(7)
     end
 
   end

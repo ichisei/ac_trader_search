@@ -26,24 +26,10 @@
       <% end %>
     </div>
     <div class='col-md-9'>
-      <table class="table mx-auto">
-        <thead>
-          <tr>
-            <th>会社名</th>
-            <th>対応可能エリア</th>
-            <th>対応可能機器</th>
-          </tr>
-        </thead>
-        <% @traders.each do |trader| %>
-        <tbody>
-          <tr>
-            <td><%= link_to trader.company_name, customer_trader_path(trader) %></td>
-            <td><%= trader.areas.map(&:compatible_area).join(" ／ ") %></td>
-            <td><%= trader.machines.map(&:possible_machine).join(" ／ ") %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
+
+      <%= render 'trader/traders/index', traders: @traders %>
+
+    <%#= paginate @traders %>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class Admin::TradersController < ApplicationController
   
   def index
-    @traders = Trader.all
+    @traders = Trader.all.page(params[:page]).per(7)
   end
   
   def show
