@@ -33,7 +33,7 @@
             <%= post.created_at.strftime('%Y/%m/%d') %><br>
             <%= post.comment %></tr><br>
             <% if post.customer == current_customer %>
-              <%= link_to [@trader, post], method: :delete, style: 'color: red;' do %>
+              <%= link_to [@trader, post], method: :delete, "data-confirm" => "本当に削除しますか？", style: 'color: red;' do %>
               <i class="fas fa-trash-alt"></i>
               <% end %>
             <%end%>

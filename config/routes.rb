@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :trader do
-    resources :traders, only: [:index, :show, :edit, :update] do
+    resources :traders, only: [:index, :show, :edit, :update, :destroy] do
       resources :posts, only: [:new, :create, :destroy]
     end
     resources :schedules, only: [:index, :create, :destroy]
@@ -36,7 +36,10 @@ Rails.application.routes.draw do
     resources :traders, only: [:index, :show]
     resources :customers, only: [:index]
   end
-
+  
+  devise_scope :customer do
+    post "customers/guest_sign_in", to: "customer/sessions#guest_sign_in"
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

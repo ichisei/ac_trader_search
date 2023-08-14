@@ -5,16 +5,18 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  
+  GUEST_EMAIL = "guest@example.com"
 
-  # def self.search
-  #   if params[:area]
-  #     areaid = params[:area][:area_ids]
-  #     @area = Area.find(areaid)
-  #     @traders = @area.traders
-  #   else
-  #     @traders = Trader.all
-  #   end
-  #     @areas = Area.all
-  # end
+  def self.guest
+    find_or_create_by!(email: GUEST_EMAIL) do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.last_name = "guest"
+      customer.first_name = "customer"
+      customer.last_name_kana = "guest"
+      customer.first_name_kana = "customer"
+    end
+  end
+
 
 end

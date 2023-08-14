@@ -32,4 +32,13 @@ class Customer::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to customer_traders_path, notice: "guestでログインしました。"
+  end
+
+
+
 end

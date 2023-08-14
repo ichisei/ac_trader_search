@@ -24,7 +24,6 @@
       </div>
     </div>
   </div>
-
   <div class="col mt-3">
   <h6>＜レビュー＞</h6>
     <% @posts.each do |post| %>
@@ -35,6 +34,9 @@
           <%= post.customer.last_name %>　様
           <%= post.created_at.strftime('%Y/%m/%d') %><br>
           <%= post.comment %></tr><br>
+          <%= link_to [@trader, post], method: :delete, "data-confirm" => "本当に削除しますか？", style: 'color: red;' do %>
+          <i class="fas fa-trash-alt"></i>
+          <% end %>
         </div>
       </div>
     </div>

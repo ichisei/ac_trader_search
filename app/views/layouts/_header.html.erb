@@ -19,7 +19,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
@@ -29,6 +29,7 @@
           <div class="text-white mt-2 ml-1">
             <%= current_customer.last_name + current_customer.first_name %>さん
           </div>
+        <!--業者ホーム/業者ログイン/業者新規登録の場合-->
         <% elsif request.path == "/home" || request.path == "/traders/sign_in" || request.path == "/traders/sign_up" %>
           <li>
             <%= link_to traders_path,class: 'nav-link text-light' do %>
@@ -36,7 +37,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_trader_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= link_to destroy_trader_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
@@ -52,7 +53,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_trader_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= link_to destroy_trader_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
@@ -74,7 +75,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
@@ -90,13 +91,18 @@
             <% end %>
           </li>
           <li>
-            <%= link_to  new_customer_registration_path,class: 'nav-link text-light' do %>
+            <%= link_to  new_customer_registration_path, class: 'nav-link text-light' do %>
               <i class="fas fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
+            <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to customers_guest_sign_in_path,method: :post, class: 'nav-link text-light' do %>
+              <i class="fas fa-user-secret"></i> ゲストログイン（閲覧用）
             <% end %>
           </li>
         <% end %>
