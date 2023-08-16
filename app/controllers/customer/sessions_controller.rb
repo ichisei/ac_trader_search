@@ -36,7 +36,7 @@ class Customer::SessionsController < Devise::SessionsController
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
-    redirect_to customer_traders_path, notice: "guestでログインしました。"
+    redirect_to customer_traders_path, notice: "guestcustomerでログインしました。"
   end
 
 

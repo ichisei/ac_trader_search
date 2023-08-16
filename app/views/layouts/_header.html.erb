@@ -66,7 +66,7 @@
         <% elsif admin_signed_in? %>
           <li>
             <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-hard-hat"></i> カスタマ一覧
+              <i class="fa-solid fa-users"></i> カスタマ一覧
             <% end %>
           </li>  
           <li>
@@ -79,6 +79,12 @@
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
+          <div class="text-white mt-2 ml-5">
+            <i class="fa-solid fa-user-gear"></i>
+          </div>
+          <div class="text-white mt-2 ml-1">
+            管理者さん
+          </div>
         <% else %>
           <li>
             <%= link_to traders_path,class: 'nav-link text-light' do %>
@@ -102,7 +108,7 @@
           </li>
           <li>
             <%= link_to customers_guest_sign_in_path,method: :post, class: 'nav-link text-light' do %>
-              <i class="fas fa-user-secret"></i> ゲストログイン（閲覧用）
+              <i class="fas fa-user-circle"></i> ゲストログイン（閲覧用）
             <% end %>
           </li>
         <% end %>

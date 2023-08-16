@@ -1,5 +1,5 @@
 class Trader::TradersController < ApplicationController
-
+  before_action :authenticate_trader!
   before_action :is_matching_login_trader, only: [:edit, :update]
 
   def index

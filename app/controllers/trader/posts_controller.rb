@@ -1,4 +1,5 @@
 class Trader::PostsController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @comment = Post.new

@@ -1,4 +1,5 @@
 class Admin::TradersController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @traders = Trader.all.page(params[:page]).per(7)

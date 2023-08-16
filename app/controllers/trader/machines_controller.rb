@@ -1,4 +1,5 @@
 class Trader::MachinesController < ApplicationController
+  before_action :authenticate_admin!
 
   def create
     @machine = Machine.new(machine_params)

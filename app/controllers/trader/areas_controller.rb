@@ -1,4 +1,6 @@
 class Trader::AreasController < ApplicationController
+  before_action :authenticate_admin!
+
 
   def create
     @area = Area.new(area_params)

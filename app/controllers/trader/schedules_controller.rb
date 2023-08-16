@@ -1,4 +1,5 @@
 class Trader::SchedulesController < ApplicationController
+  before_action :authenticate_trader!
 
   def create
     #日程(start_time)未入力に対するif文
