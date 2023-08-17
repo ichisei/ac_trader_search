@@ -8,7 +8,7 @@ class Schedule < ApplicationRecord
   validates :start_time, presence: true
 
   def date_before_start
-    errors.add(:start_time, "は過去の日付を選択できません") if start_time < Date.today
+    errors.add(:start_time, "過去の日付を選択できません") if start_time < Date.today
   end
 
 end

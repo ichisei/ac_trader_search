@@ -2,7 +2,7 @@
 <% machines.each do |machine| %>
   <div class="item shadow-sm col-md-4 p-3 my-3">
     <%= machine.possible_machine %>
-    <%= link_to machine_path(machine.id), method: :delete, style: 'color: red;', 'data-confirm'=>'このタグを削除します' do %>
+    <%= link_to machine_path(machine.id), method: :delete, style: 'color: red;', 'data-confirm'=>'この機器を削除します' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </div>
