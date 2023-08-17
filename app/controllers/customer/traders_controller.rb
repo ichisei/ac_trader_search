@@ -4,7 +4,7 @@ class Customer::TradersController < ApplicationController
     @areas = Area.all
     @machines = Machine.all
     #以下、検索機能
-    @traders = Trader.all.page(params[:page]).per(7)
+    @traders = Trader.all
     @traders = @traders.joins(:areas).merge(Area.where(id: params[:area_ids].presence)) if params[:area_ids].present?
     @traders = @traders.joins(:machines).merge(Machine.where(id: params[:machine_ids].presence)) if params[:machine_ids].present?
     @traders = @traders.joins(:schedules).merge(Schedule.where(start_time: (params[:start_time].to_datetime)..(params[:start_time].to_datetime.end_of_day))) if params[:start_time].present?
