@@ -68,7 +68,7 @@
             <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
               <i class="fa-solid fa-users"></i> カスタマ一覧
             <% end %>
-          </li>  
+          </li>
           <li>
             <%= link_to admin_traders_path,class: 'nav-link text-light' do %>
               <i class="fas fa-hard-hat"></i> 業者一覧
@@ -87,7 +87,7 @@
           </div>
         <% else %>
           <li>
-            <%= link_to traders_path,class: 'nav-link text-light' do %>
+            <%= link_to customer_traders_path,class: 'nav-link text-light' do %>
               <i class="fas fa-hard-hat"></i> 業者一覧
             <% end %>
           </li>

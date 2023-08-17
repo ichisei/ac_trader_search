@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :traders, only: [:index, :show]
     resources :customers, only: [:index]
   end
-  
+
   devise_scope :customer do
     post "customers/guest_sign_in", to: "customer/sessions#guest_sign_in"
   end

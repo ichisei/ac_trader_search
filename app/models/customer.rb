@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
-  
+
   GUEST_EMAIL = "guest@example.com"
 
   def self.guest
